@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name</title>
+    <title>Publications - Your Name</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink:wght@100..900&display=swap" rel="stylesheet">
@@ -125,6 +125,67 @@
 
         .main-content p {
             margin-bottom: 1em;
+        }
+
+        /* Publication styles */
+        .publication-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+        }
+
+        .publication-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .publication-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .publication-title a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .publication-title a:hover {
+            opacity: 0.7;
+        }
+
+        .publication-authors {
+            font-size: 13px;
+            opacity: 0.85;
+            margin-bottom: 8px;
+        }
+
+        .publication-journal {
+            font-size: 13px;
+            opacity: 0.75;
+            margin-bottom: 12px;
+        }
+
+        .publication-abstract {
+            font-size: 13px;
+            line-height: 1.7;
+            opacity: 0.8;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            opacity: 0.9;
         }
 
         /* 言語切り替えボタン（アナログ時計デザイン） */
@@ -258,7 +319,8 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: all 0.3s ease;
+            color: #000;
+            transition: all 0.3s;
             font-size: 20px;
         }
 
@@ -303,6 +365,14 @@
             .social-icons {
                 bottom: 20px;
                 left: 20px;
+            }
+
+            .publication-item {
+                padding: 20px;
+            }
+
+            .publication-title {
+                font-size: 15px;
             }
         }
     </style>
@@ -360,10 +430,26 @@
             </header>
 
             <div class="main-content">
-                <p>
-                    Welcome.<br>
-                    We value simple and beautiful things.
-                </p>
+                <div class="section-title">Publications</div>
+
+                <div class="publication-item">
+                    <div class="publication-title">
+                        <a href="https://www.nature.com/articles/s41598-024-75328-x" target="_blank">
+                            Survivability and life support in sealed mini-ecosystems with simulated planetary soils
+                        </a>
+                    </div>
+                    <div class="publication-authors">
+                        Sato, T., Abe, K., Koseki, J., et al.
+                    </div>
+                    <div class="publication-journal">
+                        Scientific Reports 14, 26322 (2024)
+                    </div>
+                    <div class="publication-abstract">
+                        Establishing a sustainable life-support system for space exploration is a formidable challenge due to the vast distances, high costs, and environmental differences from Earth. Building upon the lessons from the Biosphere 2 experiment, we introduce the novel "Ecosphere" and "Biosealed" systems, self-sustaining ecosystems within customizable, enclosed containers. These systems incorporate terrestrial ecosystems and groundwater layers, offering a potential model for transplanting Earth-like biomes to extraterrestrial environments. Over 4 years, we conducted rigorous experiments and analyses to understand the dynamics of these enclosed ecosystems.
+                    </div>
+                </div>
+
+                <!-- Add more publications here -->
             </div>
         </div>
 
@@ -379,10 +465,26 @@
             </header>
 
             <div class="main-content">
-                <p>
-                    ようこそ。<br>
-                    シンプルで美しいものを大切にしています。
-                </p>
+                <div class="section-title">論文</div>
+
+                <div class="publication-item">
+                    <div class="publication-title">
+                        <a href="https://www.nature.com/articles/s41598-024-75328-x" target="_blank">
+                            模擬惑星土壌を用いた密閉ミニ生態系における生存可能性と生命維持
+                        </a>
+                    </div>
+                    <div class="publication-authors">
+                        Sato, T., Abe, K., Koseki, J., et al.
+                    </div>
+                    <div class="publication-journal">
+                        Scientific Reports 14, 26322 (2024)
+                    </div>
+                    <div class="publication-abstract">
+                        宇宙探査のための持続可能な生命維持システムの確立は、膨大な距離、高コスト、地球との環境の違いから非常に困難な課題である。Biosphere 2実験の教訓を基に、カスタマイズ可能な密閉容器内の自己維持型生態系である「Ecosphere」と「Biosealed」という新しいシステムを導入した。これらのシステムは陸上生態系と地下水層を組み込んでおり、地球のようなバイオームを地球外環境に移植するための潜在的なモデルを提供する。4年以上にわたり、厳密な実験と分析を実施し、これらの閉鎖生態系のダイナミクスを理解した。
+                    </div>
+                </div>
+
+                <!-- ここに追加の論文を記載 -->
             </div>
         </div>
     </div>
