@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name</title>
+    <title>Contact - Your Name</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink:wght@100..900&display=swap" rel="stylesheet">
@@ -125,6 +125,93 @@
 
         .main-content p {
             margin-bottom: 1em;
+        }
+
+        /* フォームスタイル */
+        .contact-form {
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            color: white;
+            font-family: "Instrument Serif", serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: "Bitcount Single Ink", system-ui;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.5);
+            border-radius: 4px;
+            color: white;
+        }
+
+        .error-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid rgba(244, 67, 54, 0.5);
+            border-radius: 4px;
+            color: white;
         }
 
         /* 言語切り替えボタン（アナログ時計デザイン） */
@@ -258,7 +345,8 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: all 0.3s ease;
+            color: #000;
+            transition: all 0.3s;
             font-size: 20px;
         }
 
@@ -361,9 +449,40 @@
 
             <div class="main-content">
                 <p>
-                    Welcome.<br>
-                    We value simple and beautiful things.
+                    Feel free to reach out for collaborations, questions, or just to say hello.
                 </p>
+
+                <form class="contact-form" id="contact-form-en" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name-en">Name</label>
+                        <input type="text" id="name-en" name="name" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email-en">Email</label>
+                        <input type="email" id="email-en" name="email" placeholder="your.email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject-en">Subject</label>
+                        <input type="text" id="subject-en" name="subject" placeholder="Subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message-en">Message</label>
+                        <textarea id="message-en" name="message" placeholder="Your message here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+
+                <div class="success-message" id="success-en">
+                    Thank you for your message! I'll get back to you soon.
+                </div>
+
+                <div class="error-message" id="error-en">
+                    Sorry, there was an error sending your message. Please try again.
+                </div>
             </div>
         </div>
 
@@ -380,9 +499,40 @@
 
             <div class="main-content">
                 <p>
-                    ようこそ。<br>
-                    シンプルで美しいものを大切にしています。
+                    コラボレーション、ご質問、またはご挨拶など、お気軽にご連絡ください。
                 </p>
+
+                <form class="contact-form" id="contact-form-ja" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="name-ja">お名前</label>
+                        <input type="text" id="name-ja" name="name" placeholder="お名前を入力してください" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email-ja">メールアドレス</label>
+                        <input type="email" id="email-ja" name="email" placeholder="your.email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject-ja">件名</label>
+                        <input type="text" id="subject-ja" name="subject" placeholder="件名" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message-ja">メッセージ</label>
+                        <textarea id="message-ja" name="message" placeholder="メッセージをこちらに入力してください..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">送信する</button>
+                </form>
+
+                <div class="success-message" id="success-ja">
+                    メッセージをありがとうございます!すぐに返信いたします。
+                </div>
+
+                <div class="error-message" id="error-ja">
+                    申し訳ございません。メッセージの送信中にエラーが発生しました。もう一度お試しください。
+                </div>
             </div>
         </div>
     </div>
@@ -508,12 +658,51 @@
             }
         }
 
+        // フォーム送信処理
+        function handleFormSubmit(event, lang) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    form.reset();
+                    document.getElementById('success-' + lang).style.display = 'block';
+                    document.getElementById('error-' + lang).style.display = 'none';
+                    setTimeout(() => {
+                        document.getElementById('success-' + lang).style.display = 'none';
+                    }, 5000);
+                } else {
+                    document.getElementById('error-' + lang).style.display = 'block';
+                    document.getElementById('success-' + lang).style.display = 'none';
+                }
+            }).catch(error => {
+                document.getElementById('error-' + lang).style.display = 'block';
+                document.getElementById('success-' + lang).style.display = 'none';
+            });
+        }
+
         window.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('language') || 'en';
             updateLanguage(savedLang);
             updateClock();
             updateCalendar();
             setInterval(updateClock, 1000);
+
+            // フォーム送信イベントリスナー
+            document.getElementById('contact-form-en').addEventListener('submit', function(e) {
+                handleFormSubmit(e, 'en');
+            });
+            document.getElementById('contact-form-ja').addEventListener('submit', function(e) {
+                handleFormSubmit(e, 'ja');
+            });
         });
     </script>
 </body>
