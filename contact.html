@@ -194,6 +194,11 @@
             transform: scale(0.98);
         }
 
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         .success-message {
             display: none;
             margin-top: 20px;
@@ -204,6 +209,10 @@
             color: white;
         }
 
+        .success-message.show {
+            display: block;
+        }
+
         .error-message {
             display: none;
             margin-top: 20px;
@@ -212,6 +221,10 @@
             border: 1px solid rgba(244, 67, 54, 0.5);
             border-radius: 4px;
             color: white;
+        }
+
+        .error-message.show {
+            display: block;
         }
 
         /* 言語切り替えボタン（アナログ時計デザイン） */
@@ -452,7 +465,10 @@
                     Feel free to reach out for collaborations, questions, or just to say hello.
                 </p>
 
-                <form class="contact-form" id="contact-form-en" action="mailto:sato.mb@keio.jp" method="POST" enctype="text/plain">
+                <form class="contact-form" id="contact-form-en" action="https://formspree.io/f/xanyenjo" method="POST">
+                    <input type="hidden" name="_subject" value="New contact from website">
+                    <input type="hidden" name="_language" value="en">
+                    
                     <div class="form-group">
                         <label for="name-en">Name</label>
                         <input type="text" id="name-en" name="name" placeholder="Your name" required>
@@ -502,7 +518,10 @@
                     コラボレーション，ご質問，ご挨拶など，お気軽にご連絡ください．
                 </p>
 
-                <form class="contact-form" id="contact-form-ja" action="mailto:sato.mb@keio.jp" method="POST" enctype="text/plain">
+                <form class="contact-form" id="contact-form-ja" action="https://formspree.io/f/xanyenjо" method="POST">
+                    <input type="hidden" name="_subject" value="ウェブサイトからの新しい問い合わせ">
+                    <input type="hidden" name="_language" value="ja">
+                    
                     <div class="form-group">
                         <label for="name-ja">お名前</label>
                         <input type="text" id="name-ja" name="name" placeholder="お名前を入力してください" required>
@@ -658,10 +677,54 @@
             }
         }
 
-        // フォーム送信処理（mailto用に簡略化）
-        function handleFormSubmit(event, lang) {
-            // mailto:では通常のフォーム送信処理は不要
-            // ブラウザがメールクライアントを開く
+        // フォーム送信処理
+        function handleFormSubmit(formId, successId, errorId) {
+            const form = document.getElementById(formId);
+            const successMsg = document.getElementById(successId);
+            const errorMsg = document.getElementById(errorId);
+            const submitBtn = form.querySelector('.submit-btn');
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // ボタンを無効化
+                submitBtn.disabled = true;
+                submitBtn.textContent = formId.includes('en') ? 'Sending...' : '送信中...';
+                
+                // メッセージを非表示
+                successMsg.classList.remove('show');
+                errorMsg.classList.remove('show');
+
+                try {
+                    const formData = new FormData(form);
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        successMsg.classList.add('show');
+                        form.reset();
+                        setTimeout(() => {
+                            successMsg.classList.remove('show');
+                        }, 5000);
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    errorMsg.classList.add('show');
+                    setTimeout(() => {
+                        errorMsg.classList.remove('show');
+                    }, 5000);
+                } finally {
+                    // ボタンを再有効化
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = formId.includes('en') ? 'Send Message' : '送信する';
+                }
+            });
         }
 
         window.addEventListener('DOMContentLoaded', function() {
@@ -672,12 +735,8 @@
             setInterval(updateClock, 1000);
 
             // フォーム送信イベントリスナー
-            document.getElementById('contact-form-en').addEventListener('submit', function(e) {
-                handleFormSubmit(e, 'en');
-            });
-            document.getElementById('contact-form-ja').addEventListener('submit', function(e) {
-                handleFormSubmit(e, 'ja');
-            });
+            handleFormSubmit('contact-form-en', 'success-en', 'error-en');
+            handleFormSubmit('contact-form-ja', 'success-ja', 'error-ja');
         });
     </script>
 </body>
